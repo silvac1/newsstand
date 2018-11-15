@@ -1,0 +1,16 @@
+<div id="login">
+  <div id="container">
+    <div id="form">
+
+
+  <%= form_for @user do |f| %>
+		<%= f.text_field :first_name, :placeholder => 'Firstname' %>
+		<%= f.text_field :last_name, :placeholder => 'Lastname' %>
+  	<%= f.email_field :email, :placeholder => "Email" %>
+  	<%= f.password_field :password, :placeholder => "Password" %>
+  	<%= f.submit "Signup", class: "btn-submit" %>
+	<% end %>
+
+    </div>
+  </div>
+</div>
