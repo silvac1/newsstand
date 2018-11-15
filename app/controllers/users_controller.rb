@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_authenticated_owner
+
   def new
     @user = User.new
   end
@@ -13,9 +15,17 @@ class UsersController < ApplicationController
 		end
 	end
 
-  private
-		def user_params
-			params.require(:user).permit(:first_name, :last_name, :email, :password)
-		end
+  def show
+    @user = User.find(params[:id])
+  end
 
+private
+
+	def user_params
+		params.require(:user).permit(:first_name, :last_name, :email, :password)
+	end
+
+  def require_authenticated_owner
+    redirect_to root_url if !current_user || params[:id].to_i != session[:user_id]
+  end
 end
