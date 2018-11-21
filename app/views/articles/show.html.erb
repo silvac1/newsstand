@@ -5,8 +5,13 @@
     <p class="author">by <%= @article.author %></p>
     <p class="article_content"><%= @article.body %></p>
 
-    <!-- Your code here -->
+    <% if current_user && current_user.author? %>
+    <p><%= link_to "Edit" %></p>
+    <% end %>
 
+    <% if current_user && current_user.author? %>
+    <p><%= link_to "Delete" %><p>
+    <% end %>
 
   </div>
 </div>
