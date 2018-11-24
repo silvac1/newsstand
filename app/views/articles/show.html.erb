@@ -6,7 +6,7 @@
     <p class="article_content"><%= @article.body %></p>
 
     <% if current_user && current_user.author? %>
-    <p><%= link_to "Edit" %></p>
+    <p><%= link_to "Edit", edit_user_path(current_user.id) %></p>
     <% end %>
 
     <% if current_user && current_user.author? %>
